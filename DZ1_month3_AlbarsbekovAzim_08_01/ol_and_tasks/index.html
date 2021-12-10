@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ol id="todo-list">
+
+</ol>
+</body>
+<script type="text/javascript">
+    const tasks = ['Buy lemonade', 'Make toasts', 'Repair car', 'Play games', 'Pet a cat']
+    let ol=document.getElementById('todo-list').innerHTML
+    ol=''
+    for (i=0; i<tasks.length; i++){
+        ol=ol+`<li class="task">${tasks[i]}</li>
+`
+    }
+    console.log(ol)
+
+</script>
+</html>
