@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="container">
+    <div></div>
+</div>
+<input id="add-item-btn" type="button" value="+">
+</body>
+<script type="text/javascript">
+    let btn = document.getElementById('add-item-btn')
+    let cnt = document.getElementById('container')
+    btn.onclick = () => {
+        const elem = document.createElement('div')
+        elem.className = 'element'
+        elem.appendChild(document.createTextNode('Element'))
+        cnt.append(elem)
+    }
+</script>
+</html>

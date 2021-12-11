@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="container"></div>
+<button id="start">Start</button>
+<button id="stop">Stop</button>
+</body>
+<script type="text/javascript">
+    let cntr = document.getElementById('container')
+    let strt = document.getElementById('start')
+    let stp = document.getElementById('stop')
+    let saver = 1
+
+    function randomDiapazone(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    const everyfivesec = () => {
+        const elem = document.createElement('div')
+        elem.className = 'element'
+        elem.appendChild(document.createTextNode(`${randomDiapazone(0, 20)}`))
+        cntr.append(elem)
+    }
+    let setInt
+    const setInter = () => {
+        setInt = setInterval(everyfivesec, 5000)
+    }
+    setInter()
+    strt.onclick = () => {
+        if (saver == 0) {      //Была проблема если 2 раза нажать старт то по 2 за раз выводило
+            setInter()        //а стоп 1 останавливал а другой 1 никак больше остановить нельзя было
+        }
+        saver = 1
+    }
+    stp.onclick = () => {
+        if (saver == 1) {
+            clearInterval(setInt)
+        }
+        saver = 0
+    }
+</script>
+</html>
