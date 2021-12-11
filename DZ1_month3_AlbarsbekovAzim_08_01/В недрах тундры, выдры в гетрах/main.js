@@ -1,9 +1,9 @@
-let str1=document.getElementById('string-1')
-let str2=document.getElementById('string-2')
-let str3=document.getElementById('string-3')
-let str4=document.getElementById('string-4')
-let str5=document.getElementById('string-5')
-let str6=document.getElementById('string-6')
+let str1=document.getElementById('string-1').innerText
+let str2=document.getElementById('string-2').innerText
+let str3=document.getElementById('string-3').innerText
+let str4=document.getElementById('string-4').innerText
+let str5=document.getElementById('string-5').innerText
+let str6=document.getElementById('string-6').innerText
 let strAll=[str1, str2, str3, str4, str5, str6]
 const strTr1=strAll.filter(s1 => s1=="В недрах тундры, выдры в гетрах")
 const strTr2=strAll.filter(s2 => s2=="Тырят в вёдра ядра кедров!")
