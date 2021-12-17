@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>title</title>
+</head>
+<body>
+<div>
+    <span id="minutes">00</span>:
+    <span id="seconds">00</span>
+</div>
+<button id="start">Start</button>
+<button id="pause">Pause</button>
+<button id="reset">Reset</button>
+</body>
+<script type="text/javascript">
+    let strt = document.getElementById('start')
+    let ps = document.getElementById('pause')
+    let rst = document.getElementById('reset')
+    let scnd = 0
+    let mnt = 0
+    let saver = 1
+    const updsec = () => {
+        let scnds = document.getElementById('seconds')
+        scnds.innerText = scnd
+    }
+    const updmin = () => {
+        let mnts = document.getElementById('minutes')
+        mnts.innerText = mnt
+    }
+    const minuts = () => {
+        if (mnt < 9) {
+            mnt++
+            mnt = '0' + mnt
+            updmin()
+        } else if (mnt >= 9) {
+            mnt++
+            updmin()
+        }
+    }
+    const seconds = () => {
+        if (scnd < 9) {
+            scnd++
+            scnd = '0' + scnd
+            updsec()
+        } else if (scnd == 59) {
+            minuts()
+            scnd = '0' + 0
+            updsec()
+        } else if (scnd >= 9) {
+            scnd++
+            updsec()
+        }
+    }
+    let setInt
+    const setInter = () => {
+        setInt = setInterval(seconds, 500)
+    }
+    setInter()
+    rst.onclick = () => {
+        mnt = '0' + 0
+        scnd = '0' + 0
+        updmin()
+        updsec()
+    }
+    strt.onclick = () => {
+        if (saver == 0) {
+            setInter()
+        }
+        saver = 1
+    }
+    ps.onclick = () => {
+        if (saver == 1) {
+            clearInterval(setInt)
+        }
+        saver = 0
+    }
+</script>
+</html>

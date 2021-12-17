@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form>
+    <input id="name" type="text" name="username"/>
+    <input id="password" type="text" name="password"/>
+    <input id="logInButton" type="submit" value="Log in" disabled/>
+</form>
+</body>
+<script type="text/javascript">
+    let button = document.getElementById('logInButton')
+    let username = document.getElementById('name')
+    let password = document.getElementById('password')
+    const alertLogInAndPassword = () => {
+        alert(`${username.value}\n${password.value}`)
+    }
+    const nameAndPasswordIs6 = () => {
+        if (username.value.length >= 6) {
+            if (password.value.length >= 6) {
+                button.disabled = false
+            } else {
+                button.disabled = true
+            }
+        } else {
+            button.disabled = true
+        }
+    }
+    username.onkeyup = () => {
+        nameAndPasswordIs6()
+    }
+    password.onkeyup = () => {
+        nameAndPasswordIs6()
+    }
+    button.onclick = () => {
+        alertLogInAndPassword()
+    }
+</script>
+</html>
