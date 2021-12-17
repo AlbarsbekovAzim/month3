@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<p id="q1" class="question">
+    Висит груша - нельзя скушать.
+    <span id="a1" class="answer">Лампочка</span>
+</p>
+
+<p id="q2" class="question">
+    С луком с яйцами, но не пирожок?
+    <span id="a2" class="answer">Робин Гуд</span>
+</p>
+
+<p id="q3" class="question">
+    Один глаз, один рог, но не носорог?
+    <span id="a3" class="answer">Корова из-за угла выглядывает</span>
+</p>
+
+</body>
+<script type="text/javascript">
+    let q1 = document.getElementById('q1')
+    let q2 = document.getElementById('q2')
+    let q3 = document.getElementById('q3')
+    let a1 = document.getElementById('a1')
+    let a2 = document.getElementById('a2')
+    let a3 = document.getElementById('a3')
+    let b1
+    let b2
+    let b3
+    const addButtons = () => {
+        b1 = document.createElement('button')
+        b1.innerText = 'Посмотреть ответ'
+        q1.appendChild(b1)
+        b2 = document.createElement('button')
+        b2.innerText = 'Посмотреть ответ'
+        q2.appendChild(b2)
+        b3 = document.createElement('button')
+        b3.innerText = 'Посмотреть ответ'
+        q3.appendChild(b3)
+    }
+    addButtons()
+    let ast1 = a1.style
+    let ast2 = a2.style
+    let ast3 = a3.style
+    ast1.display = 'none'
+    ast2.display = 'none'
+    ast3.display = 'none'
+    b1.onclick = () => {
+        if (ast1.display=='none'){
+            ast1.display='inline-block'
+        }
+        else if (ast1.display!='none'){
+            ast1.display='none'
+        }
+    }
+    b2.onclick = () => {
+        if (ast2.display=='none'){
+            ast2.display='inline-block'
+        }
+        else if (ast2.display!='none'){
+            ast2.display='none'
+        }
+    }
+    b3.onclick = () => {
+        if (ast3.display=='none'){
+            ast3.display='inline-block'
+        }
+        else if (ast3.display!='none'){
+            ast3.display='none'
+        }
+    }
+</script>
+</html>
