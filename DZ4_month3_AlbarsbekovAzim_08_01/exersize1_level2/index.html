@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input id="country-name" type="text">
+<button id="show">Show information</button>
+<p><b>Name: </b><span id="name"></span></p>
+<p><b>Region: </b><span id="region"></span></p>
+<p><b>Subregion: </b><span id="subregion"></span></p>
+<p><b>Capital: </b><span id="capital"></span></p>
+<p><b>Flag: </b><span id="flag"></span></p>
+</body>
+<script type="text/javascript">
+    let name = document.getElementById('name')
+    let region = document.getElementById('region')
+    let subregion = document.getElementById('subregion')
+    let capital = document.getElementById('capital')
+    let flag = document.getElementById('flag')
+    let countryname = document.getElementById('country-name')
+    let show = document.getElementById('show')
+    f = document.createElement('img')
+    f.style.border = '1px solid black'
+    flag.appendChild(f)
+    const getData = () => {
+        fetch(`https://restcountries.com/v3.1/name/${countryname.value}`).then((data) => {
+            data.json().then(response => {
+                name.innerText = response[0].name.common
+                region.innerText = response[0].region
+                subregion.innerText = response[0].subregion
+                capital.innerText = response[0].capital[0]
+                f.src = response[0].flags.png
+                console.log(response)
+            })
+        })
+    }
+    show.onclick = () => {
+        getData()
+    }
+</script>
+</html>
