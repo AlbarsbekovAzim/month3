@@ -14,9 +14,32 @@
         display: flex;
         flex-direction: column;
     }
+    span{
+        margin: 50px;
+    }
 </script>
 <script type="text/javascript">
     let flex = document.getElementsByClassName('flex')
-
+    let resplen
+    fetch('https://restcountries.com/v3.1/all').then((data) => {
+        data.json().then(response => {
+            console.log(response)
+            let resplen = response.length
+            for (let i=0; i<resplen+1; i++){
+                let a = document.createElement('div')
+                let a1 = document.createElement('span')
+                let a2 = document.createElement('img')
+                let a3 = document.createElement('span')
+                let a4 = document.createElement('span')
+                let a5 = document.createElement('span')
+                a1.innerText = response[i].cca2
+                a2.src = response[i].flags.png
+                a3.innerText = response[i].name.common
+                a4.innerText = response[i].capital[0]
+                a5.innerText = response[i].population
+                a.appendChild(a1, a2, a3, a4, a5)
+            }
+        })
+    })
 </script>
 </html>
