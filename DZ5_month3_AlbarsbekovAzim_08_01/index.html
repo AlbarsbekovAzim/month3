@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="inp"><button id="butt">показать</button>
+<div style="display: flex">
+    <img style="width: 200px; height: 200px" id="pokfrontpic" src="" alt="">
+    <img style="width: 200px; height: 200px" id="pokbackpic" src="" alt="">
+    <div>
+        <div>Name: <span id="name"></span></div>
+        <div>Id: <span id="id"></span></div>
+        <div>Type: <span id="type"></span></div>
+        <div>Weight: <span id="weight"></span></div>
+        <div>Height: <span id="height"></span></div>
+    </div>
+</div>
+<script type="text/javascript">
+    let type = document.getElementById('type')
+    let weight = document.getElementById('weight')
+    let height = document.getElementById('height')
+    let id = document.getElementById('id')
+    let name = document.getElementById('name')
+    let inp = document.getElementById('inp')
+    let butt = document.getElementById('butt')
+    let pokfrontpic = document.getElementById('pokfrontpic')
+    let pokbackpic = document.getElementById('pokbackpic')
+    pokbackpic.style.visibility = 'hidden'
+    pokfrontpic.style.visibility = 'hidden'
+    name.parentElement.style.visibility = 'hidden'
+    id.parentElement.style.visibility = 'hidden'
+    type.parentElement.style.visibility = 'hidden'
+    weight.parentElement.style.visibility = 'hidden'
+    height.parentElement.style.visibility = 'hidden'
+    const find = () => {
+        fetch('https://pokeapi.co/api/v2/pokemon/' + inp.value).then((data) => {
+            data.json().then(response => {
+                type.innerText = response.types[0].type.name
+                id.innerText = response.id
+                name.innerText = response.name
+                pokfrontpic.src = response.sprites.front_default
+                pokbackpic.src = response.sprites.back_default
+                weight.innerText = response.weight
+                height.innerText = response.height
+                pokbackpic.style.visibility = 'visible'
+                pokfrontpic.style.visibility = 'visible'
+                name.parentElement.style.visibility = 'visible'
+                id.parentElement.style.visibility = 'visible'
+                type.parentElement.style.visibility = 'visible'
+                weight.parentElement.style.visibility = 'visible'
+                height.parentElement.style.visibility = 'visible'
+            })
+        })
+    }
+    butt.onclick = () => {
+        find()
+    }
+</script>
+</body>
+</html>
