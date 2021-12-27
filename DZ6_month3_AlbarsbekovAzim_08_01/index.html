@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="tools">
+    <input placeholder="Coctail" type="text" id="input">
+    <button id="button">Search</button>
+
+</div>
+<script type="text/javascript">
+    let divall = document.getElementById('tools')
+    let searchbutton = document.getElementById('button')
+    const getData = async () => {
+        let coctailname = document.getElementById('input')
+        const data = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${coctailname.value}`)
+        const response = await data.json()
+        console.log(response)
+        picturesandnames = document.createElement('div')
+        picturesandnames.style.display = 'flex'
+        for (let i=0; i < response[0].length; i++) {
+            let divwithcoctail = document.createElement('div')
+            let imgofcoctail = document.createElement('img')
+            imgofcoctail.src = response[0[i]].strDrinkThumb
+            let name = document.createElement('div')
+            name.value = response[0[i]].strDrink
+            divwithcoctail.appendChild(imgofcoctail)
+            divwithcoctail.appendChild(name)
+            picturesandnames.appendChild(divwithcoctail)
+        }
+        divall.appendChild(picturesandnames)
+    }
+    searchbutton.onclick = () => {
+        getData()
+    }
+</script>
+</body>
+</html>
