@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="input">
+<button id="btn">найти</button>
+<div>страна: <span id="country"></span></div>
+<div>
+    граничит с:
+    <ol id="borderwith"></ol>
+</div>
+<script type="text/javascript">
+    let btn = document.getElementById('btn')
+    let country = document.getElementById('country')
+    let borders = document.getElementById('borderwith')
+    const getData = async () => {
+        let inp = document.getElementById('input')
+        let data = await fetch('https://restcountries.com/v3.1/name/' + inp.value)
+        let response = await data.json()
+        console.log(response)
+        country.innerText = response[0].name.common
+        response[0].borders.forEach(async names => {
+            let resp = (await fetch('https://restcountries.com/v3.1/alpha/' + names)).json()
+            let fullname = document.createElement('li')
+            console.log(resp)
+            fullname.innerText = resp.name
+            borders.appendChild(fullname)
+        })
+    }
+    btn.onclick = () => {
+        getData()
+    }
+</script>
+</body>
+</html>
